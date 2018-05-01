@@ -1,8 +1,21 @@
+/* global document require */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import registerServiceWorker from './registerServiceWorker'; 
+import Home from './views/home';
+
+ReactDOM.render(
+  <BrowserRouter>
+    <div>
+      <Switch>
+        <Route exact path="/" component={Home} />
+      </Switch>
+    </div>
+  </BrowserRouter>,
+  document.getElementById('root'),
+);
+
 registerServiceWorker();
