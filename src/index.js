@@ -4,8 +4,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Home from './views/home';
-import About from './views/about';
+import Home from './views/containers/home';
+import About from './views/containers/about';
 
 ReactDOM.render(
   <BrowserRouter>
