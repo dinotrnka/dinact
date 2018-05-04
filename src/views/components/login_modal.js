@@ -7,13 +7,17 @@ import {
   ControlLabel,
 } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import { login } from '../../state/login/actions';
 
 class LoginModal extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: '',
+      email: 'dinaga@gmail.com',
       password: '',
     };
   }
@@ -24,9 +28,9 @@ class LoginModal extends Component {
     });
   }
 
-  handleSubmit = () => {
-    console.log('Email', this.state.email);
-    console.log('Pasword', this.state.password);
+  handleSubmit = (e) => {
+    this.props.login(this.state.email, this.state.password);
+    e.preventDefault();
   }
 
   render() {
@@ -74,6 +78,7 @@ LoginModal.propTypes = {
   show: PropTypes.bool,
   hideLogin: PropTypes.func.isRequired,
   errorMessage: PropTypes.string,
+  login: PropTypes.func.isRequired,
 };
 
 LoginModal.defaultProps = {
@@ -105,4 +110,18 @@ const signupHolderStyle = {
 
 };
 
-export default LoginModal;
+function mapStateToProps(state) {
+  return {
+    isLoggingIn: state.login.isLoggingIn,
+    loggedIn: state.login.loggedIn,
+    errorMessage: state.login.errorMessage,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    login,
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);
