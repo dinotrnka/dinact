@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import stylePropType from 'react-style-proptype';
 
 import { style } from '../../config/helpers';
 
@@ -20,7 +21,7 @@ const Button = props => (
 );
 
 Button.propTypes = {
-  style: PropTypes.element,
+  style: stylePropType,
   children: PropTypes.node,
   onClick: PropTypes.func.isRequired,
 };

@@ -1,7 +1,6 @@
 import * as types from './types';
 
 const INITIAL_STATE = {
-  isLoggingIn: false,
   loggedIn: false,
   errorMessage: '',
 };
@@ -9,25 +8,23 @@ const INITIAL_STATE = {
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
     case types.LOGIN_REQUEST:
+    case types.LOGIN_CANCEL:
       return {
         ...state,
-        isLoggingIn: true,
         loggedIn: false,
         errorMessage: '',
       };
     case types.LOGIN_SUCCESS:
       return {
         ...state,
-        isLoggingIn: false,
         loggedIn: true,
         errorMessage: '',
       };
     case types.LOGIN_FAILURE:
       return {
         ...state,
-        isLoggingIn: false,
         loggedIn: false,
-        errorMessage: action.payload,
+        errorMessage: action.payload.data.error,
       };
     default:
       return state;

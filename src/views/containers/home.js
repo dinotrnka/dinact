@@ -12,27 +12,26 @@ import {
 class Home extends React.Component {
   constructor() {
     super();
-    this.state = { showLogin: false };
+    this.state = { showLoginModal: false };
 
-    this.showLogin = this.showLogin.bind(this);
-    this.hideLogin = this.hideLogin.bind(this);
+    this.showLoginModal = this.showLoginModal.bind(this);
+    this.hideLoginModal = this.hideLoginModal.bind(this);
   }
 
-  showLogin() {
-    this.setState({ showLogin: true });
+  showLoginModal() {
+    this.setState({ showLoginModal: true });
   }
 
-  hideLogin() {
-    this.setState({ showLogin: false });
+  hideLoginModal() {
+    this.setState({ showLoginModal: false });
   }
 
   render() {
     return (
       <div style={containerStyle}>
         <LoginModal
-          show={this.state.showLogin}
-          hideLogin={this.hideLogin}
-          // errorMessage="What the FAXK dude?"
+          show={this.state.showLoginModal}
+          hideLoginModal={this.hideLoginModal}
         />
         <Card
           color={TRISS_GOLD}
@@ -41,7 +40,7 @@ class Home extends React.Component {
           title="Yennefer"
           subtitle="The most powerful and the most interesting sorceress in the universe."
           imageUrl="https://pre00.deviantart.net/e0cb/th/pre/f/2015/255/0/e/yennefer_by_urumiccina-d99ca3g.jpg"
-          onClick={this.showLogin}
+          onClick={this.showLoginModal}
         />
         <Card
           color={TRISS_GOLD}
@@ -50,7 +49,7 @@ class Home extends React.Component {
           title="Triss"
           subtitle="She's such a sweetheart! Not really."
           imageUrl="https://i.imgur.com/QHl1YTk.jpg"
-          onClick={this.showLogin}
+          onClick={this.showLoginModal}
         />
         <Card
           color={TRISS_GOLD}
@@ -59,7 +58,7 @@ class Home extends React.Component {
           title="Keira"
           subtitle="A girly and manipulative witch, she ends up with Lambert, of all people."
           imageUrl="https://vignette.wikia.nocookie.net/witcher/images/6/6f/Tw3_journal_keira.png"
-          onClick={this.showLogin}
+          onClick={this.showLoginModal}
         />
         <Card
           color={TRISS_GOLD}
@@ -68,7 +67,7 @@ class Home extends React.Component {
           title="Shani"
           subtitle="No matter who you are, Shani will heal your wounds... and your heart."
           imageUrl="https://vignette.wikia.nocookie.net/vedmak/images/4/4a/Shani.jpg"
-          onClick={this.showLogin}
+          onClick={this.showLoginModal}
         />
         <Card
           color={TRISS_GOLD}
@@ -77,7 +76,7 @@ class Home extends React.Component {
           title="Yennefer"
           subtitle="The most powerful and the most interesting sorceress in the universe."
           imageUrl="https://pre00.deviantart.net/e0cb/th/pre/f/2015/255/0/e/yennefer_by_urumiccina-d99ca3g.jpg"
-          onClick={this.showLogin}
+          onClick={this.showLoginModal}
         />
         <Card
           color={TRISS_GOLD}
@@ -86,7 +85,7 @@ class Home extends React.Component {
           title="Triss"
           subtitle="She's such a sweetheart! Not really."
           imageUrl="https://i.imgur.com/QHl1YTk.jpg"
-          onClick={this.showLogin}
+          onClick={this.showLoginModal}
         />
         <Card
           color={TRISS_GOLD}
@@ -95,7 +94,7 @@ class Home extends React.Component {
           title="Keira"
           subtitle="A girly and manipulative witch, she ends up with Lambert, of all people."
           imageUrl="https://vignette.wikia.nocookie.net/witcher/images/6/6f/Tw3_journal_keira.png"
-          onClick={this.showLogin}
+          onClick={this.showLoginModal}
         />
         <Card
           color={TRISS_GOLD}
@@ -104,7 +103,7 @@ class Home extends React.Component {
           title="Shani"
           subtitle="No matter who you are, Shani will heal your wounds... and your heart."
           imageUrl="https://vignette.wikia.nocookie.net/vedmak/images/4/4a/Shani.jpg"
-          onClick={this.showLogin}
+          onClick={this.showLoginModal}
         />
         <Card
           color={TRISS_GOLD}
@@ -113,7 +112,7 @@ class Home extends React.Component {
           title="Yennefer"
           subtitle="The most powerful and the most interesting sorceress in the universe."
           imageUrl="https://pre00.deviantart.net/e0cb/th/pre/f/2015/255/0/e/yennefer_by_urumiccina-d99ca3g.jpg"
-          onClick={this.showLogin}
+          onClick={this.showLoginModal}
         />
         <Card
           color={TRISS_GOLD}
@@ -122,7 +121,7 @@ class Home extends React.Component {
           title="Triss"
           subtitle="She's such a sweetheart! Not really."
           imageUrl="https://i.imgur.com/QHl1YTk.jpg"
-          onClick={this.showLogin}
+          onClick={this.showLoginModal}
         />
         <Card
           color={TRISS_GOLD}
@@ -131,7 +130,7 @@ class Home extends React.Component {
           title="Keira"
           subtitle="A girly and manipulative witch, she ends up with Lambert, of all people."
           imageUrl="https://vignette.wikia.nocookie.net/witcher/images/6/6f/Tw3_journal_keira.png"
-          onClick={this.showLogin}
+          onClick={this.showLoginModal}
         />
         <Card
           color={TRISS_GOLD}
@@ -140,7 +139,7 @@ class Home extends React.Component {
           title="Shani"
           subtitle="No matter who you are, Shani will heal your wounds... and your heart."
           imageUrl="https://vignette.wikia.nocookie.net/vedmak/images/4/4a/Shani.jpg"
-          onClick={this.showLogin}
+          onClick={this.showLoginModal}
         />
       </div>
     );

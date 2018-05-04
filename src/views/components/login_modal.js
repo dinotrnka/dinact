@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
-import {
-  Modal,
-  Button,
-  FormGroup,
-  FormControl,
-  ControlLabel,
-} from 'react-bootstrap';
-import PropTypes from 'prop-types';
+import { Modal, Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import { login } from '../../state/login/actions';
+import { login, loginCancel } from '../../state/login/actions';
 
 class LoginModal extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       email: 'dinaga@gmail.com',
       password: '',
@@ -23,9 +16,7 @@ class LoginModal extends Component {
   }
 
   handleChange = (e) => {
-    this.setState({
-      [e.target.id]: e.target.value,
-    });
+    this.setState({ [e.target.id]: e.target.value });
   }
 
   handleSubmit = (e) => {
@@ -33,10 +24,15 @@ class LoginModal extends Component {
     e.preventDefault();
   }
 
+  handleClose = () => {
+    this.props.hideLoginModal();
+    this.props.loginCancel();
+  }
+
   render() {
     return (
       <Modal show={this.props.show}>
-        <Modal.Header closeButton onClick={this.props.hideLogin}>
+        <Modal.Header closeButton onClick={this.handleClose}>
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -58,15 +54,9 @@ class LoginModal extends Component {
                 type="password"
               />
             </FormGroup>
-            <div style={errorHolderStyle}>
-              {this.props.errorMessage}
-            </div>
-            <Button bsSize="large" type="submit" style={loginButtonStyle}>
-              Login
-            </Button>
-            <div style={signupHolderStyle}>
-              Dont have an account? <a href="/">Sign up</a> now!
-            </div>
+            <div style={errorHolderStyle}>{this.props.errorMessage}</div>
+            <Button bsSize="large" type="submit" style={loginButtonStyle}>Login</Button>
+            <div>Dont have an account? <a href="/">Sign up</a> now!</div>
           </form>
         </Modal.Body>
       </Modal>
@@ -76,9 +66,10 @@ class LoginModal extends Component {
 
 LoginModal.propTypes = {
   show: PropTypes.bool,
-  hideLogin: PropTypes.func.isRequired,
   errorMessage: PropTypes.string,
+  hideLoginModal: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
+  loginCancel: PropTypes.func.isRequired,
 };
 
 LoginModal.defaultProps = {
@@ -106,13 +97,8 @@ const loginButtonStyle = {
   width: 100,
 };
 
-const signupHolderStyle = {
-
-};
-
 function mapStateToProps(state) {
   return {
-    isLoggingIn: state.login.isLoggingIn,
     loggedIn: state.login.loggedIn,
     errorMessage: state.login.errorMessage,
   };
@@ -121,6 +107,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     login,
+    loginCancel,
   }, dispatch);
 }
 
