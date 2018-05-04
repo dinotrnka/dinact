@@ -1,28 +1,108 @@
-import React from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import React, { Component } from 'react';
+import {
+  Modal,
+  Button,
+  FormGroup,
+  FormControl,
+  ControlLabel,
+} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-const LoginModal = props => (
-  <Modal show={props.show}>
-    <Modal.Header closeButton onClick={props.hideLogin}>
-      <Modal.Title>Login</Modal.Title>
-    </Modal.Header>
-    <Modal.Body>
-      Login here dude!
-    </Modal.Body>
-    <Modal.Footer>
-      <Button onClick={props.hideLogin}>Close</Button>
-    </Modal.Footer>
-  </Modal>
-);
+class LoginModal extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: '',
+      password: '',
+    };
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value,
+    });
+  }
+
+  handleSubmit = () => {
+    console.log('Email', this.state.email);
+    console.log('Pasword', this.state.password);
+  }
+
+  render() {
+    return (
+      <Modal show={this.props.show}>
+        <Modal.Header closeButton onClick={this.props.hideLogin}>
+          <Modal.Title>Login</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form style={formStyle} onSubmit={this.handleSubmit}>
+            <FormGroup style={formGroupStyle} controlId="email" bsSize="large">
+              <ControlLabel>Email</ControlLabel>
+              <FormControl
+                autoFocus
+                type="email"
+                value={this.state.email}
+                onChange={this.handleChange}
+              />
+            </FormGroup>
+            <FormGroup style={formGroupStyle} controlId="password" bsSize="large">
+              <ControlLabel>Password</ControlLabel>
+              <FormControl
+                value={this.state.password}
+                onChange={this.handleChange}
+                type="password"
+              />
+            </FormGroup>
+            <div style={errorHolderStyle}>
+              {this.props.errorMessage}
+            </div>
+            <Button bsSize="large" type="submit" style={loginButtonStyle}>
+              Login
+            </Button>
+            <div style={signupHolderStyle}>
+              Dont have an account? <a href="/">Sign up</a> now!
+            </div>
+          </form>
+        </Modal.Body>
+      </Modal>
+    );
+  }
+}
 
 LoginModal.propTypes = {
   show: PropTypes.bool,
   hideLogin: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string,
 };
 
 LoginModal.defaultProps = {
   show: false,
+  errorMessage: '',
+};
+
+const formStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+};
+
+const formGroupStyle = {
+  width: '100%',
+};
+
+const errorHolderStyle = {
+  color: 'red',
+  fontWeight: 'bold',
+};
+
+const loginButtonStyle = {
+  margin: 20,
+  width: 100,
+};
+
+const signupHolderStyle = {
+
 };
 
 export default LoginModal;

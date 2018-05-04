@@ -28,10 +28,11 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div style={container}>
+      <div style={containerStyle}>
         <LoginModal
           show={this.state.showLogin}
           hideLogin={this.hideLogin}
+          // errorMessage="What the FAXK dude?"
         />
         <Card
           color={TRISS_GOLD}
@@ -149,7 +150,7 @@ class Home extends React.Component {
 
 export default Home;
 
-const container = {
+const containerStyle = {
   backgroundColor: TRISS_BLUE,
   maxWidth: 940,
   display: 'flex',

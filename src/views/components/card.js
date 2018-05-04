@@ -5,21 +5,21 @@ import Button from '../components/button';
 import { style } from '../../config/helpers';
 
 const Card = (props) => {
-  const containerStyle = style(container, {
+  const newContainerStyle = style(containerStyle, {
     backgroundColor: props.color,
     borderColor: props.border,
   });
 
-  const circleStyle = style(circle, {
+  const newCircleStyle = style(circleStyle, {
     backgroundImage: `url(${props.imageUrl})`,
     borderColor: props.border,
   });
 
   return (
-    <Button style={containerStyle} onClick={props.onClick}>
-      <div style={circleStyle} />
-      <div style={title}>{props.title}</div>
-      <div style={subtitle}>{props.subtitle}</div>
+    <Button style={newContainerStyle} onClick={props.onClick}>
+      <div style={newCircleStyle} />
+      <div style={titleStyle}>{props.title}</div>
+      <div style={subtitleStyle}>{props.subtitle}</div>
     </Button>
   );
 };
@@ -38,7 +38,7 @@ Card.defaultProps = {
   border: 'black',
 };
 
-const container = {
+const containerStyle = {
   width: 200,
   height: 300,
   borderRadius: 20,
@@ -51,7 +51,7 @@ const container = {
   cursor: 'pointer',
 };
 
-const circle = {
+const circleStyle = {
   width: 150,
   height: 150,
   borderRadius: 75,
@@ -61,7 +61,7 @@ const circle = {
   borderWidth: 4,
 };
 
-const title = {
+const titleStyle = {
   marginTop: 20,
   marginLeft: 10,
   marginRight: 10,
@@ -70,7 +70,7 @@ const title = {
   fontWeight: 'bold',
 };
 
-const subtitle = {
+const subtitleStyle = {
   fontSize: 14,
   fontFamily: 'Arial',
   marginTop: 10,
