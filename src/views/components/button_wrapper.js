@@ -4,7 +4,7 @@ import stylePropType from 'react-style-proptype';
 
 import { style } from '../../config/helpers';
 
-const Button = props => (
+const ButtonWrapper = props => (
   <span
     style={style(baseStyle, props.style)}
     role="button"
@@ -20,13 +20,13 @@ const Button = props => (
   </span>
 );
 
-Button.propTypes = {
+ButtonWrapper.propTypes = {
   style: stylePropType,
   children: PropTypes.node,
   onClick: PropTypes.func.isRequired,
 };
 
-Button.defaultProps = {
+ButtonWrapper.defaultProps = {
   style: {},
   children: {},
 };
@@ -36,4 +36,4 @@ const baseStyle = {
   cursor: 'pointer',
 };
 
-export default Button;
+export default ButtonWrapper;

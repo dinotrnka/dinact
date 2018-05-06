@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '../components/button';
+import ButtonWrapper from '../components/button_wrapper';
 import { style } from '../../config/helpers';
 
 const Card = (props) => {
@@ -16,11 +16,11 @@ const Card = (props) => {
   });
 
   return (
-    <Button style={newContainerStyle} onClick={props.onClick}>
+    <ButtonWrapper style={newContainerStyle} onClick={props.onClick}>
       <div style={newCircleStyle} />
       <div style={titleStyle}>{props.title}</div>
       <div style={subtitleStyle}>{props.subtitle}</div>
-    </Button>
+    </ButtonWrapper>
   );
 };
 
@@ -30,12 +30,13 @@ Card.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 Card.defaultProps = {
   color: 'white',
   border: 'black',
+  onClick: () => { console.log('CARD CLICKED'); },
 };
 
 const containerStyle = {

@@ -15,6 +15,10 @@ class LoginModal extends Component {
     };
   }
 
+  onEnter = () => {
+    this.setState({ email: '', password: '' });
+  }
+
   handleChange = (e) => {
     this.setState({ [e.target.id]: e.target.value });
   }
@@ -25,13 +29,13 @@ class LoginModal extends Component {
   }
 
   handleClose = () => {
-    this.props.hideLoginModal();
+    this.props.hideLogin();
     this.props.loginCancel();
   }
 
   render() {
     return (
-      <Modal show={this.props.show}>
+      <Modal show={this.props.loginVisible} onEnter={this.onEnter}>
         <Modal.Header closeButton onClick={this.handleClose}>
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
@@ -41,7 +45,6 @@ class LoginModal extends Component {
               <ControlLabel>Email</ControlLabel>
               <FormControl
                 autoFocus
-                type="email"
                 value={this.state.email}
                 onChange={this.handleChange}
               />
@@ -65,15 +68,15 @@ class LoginModal extends Component {
 }
 
 LoginModal.propTypes = {
-  show: PropTypes.bool,
+  loginVisible: PropTypes.bool,
   errorMessage: PropTypes.string,
-  hideLoginModal: PropTypes.func.isRequired,
+  hideLogin: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
   loginCancel: PropTypes.func.isRequired,
 };
 
 LoginModal.defaultProps = {
-  show: false,
+  loginVisible: false,
   errorMessage: '',
 };
 
