@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Banner from '../containers/banner';
-import Album from '../components/album';
+import Album from '../components/album/album';
 
 const Home = () => (
   <div>

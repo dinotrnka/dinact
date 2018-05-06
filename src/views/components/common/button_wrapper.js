@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import stylePropType from 'react-style-proptype';
 
-import { style } from '../../config/helpers';
+import { style } from '../../../config/helpers';
 
 const ButtonWrapper = props => (
   <span

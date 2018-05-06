@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import LoginModal from '../components/login_modal';
+import LoginModal from '../components/banner/login_modal';
 import BannerHolder from '../components/banner/banner_holder';
 import LoginButton from '../components/banner/login_button';
 

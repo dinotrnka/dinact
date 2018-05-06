@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Card from '../components/card';
+import Card from './card';
 import {
   TRISS_BLUE,
   TRISS_DARK_BLUE,
   TRISS_GOLD,
   TRISS_RED,
-} from '../../config/colors';
-import { PAGE_WIDTH } from '../../config/constants';
+} from '../../../config/colors';
+import { PAGE_WIDTH } from '../../../config/constants';
 
 const Album = () => (
   <div style={containerStyle}>

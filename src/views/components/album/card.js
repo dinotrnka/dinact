@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ButtonWrapper from '../components/button_wrapper';
-import { style } from '../../config/helpers';
+import ButtonWrapper from '../../components/common/button_wrapper';
+import { style } from '../../../config/helpers';
 
 const Card = (props) => {
   const newContainerStyle = style(containerStyle, {

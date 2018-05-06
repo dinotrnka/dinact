@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { login, loginCancel } from '../../state/login/actions';
+import { login, loginCancel } from '../../../state/login/actions';
 
 class LoginModal extends Component {
   constructor(props) {
