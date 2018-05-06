@@ -22,13 +22,13 @@ class LoginModal extends Component {
   }
 
   handleClose = () => {
-    this.props.hideLogin();
+    this.props.hideLoginModal();
     this.props.loginCancelAction();
   }
 
   render() {
     return (
-      <Modal show={this.props.loginVisible} onEnter={this.onEnter}>
+      <Modal show={this.props.isVisible} onEnter={this.onEnter}>
         <Modal.Header closeButton onClick={this.handleClose}>
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
@@ -53,15 +53,15 @@ class LoginModal extends Component {
 }
 
 LoginModal.propTypes = {
-  loginVisible: PropTypes.bool,
+  isVisible: PropTypes.bool,
   errorMessage: PropTypes.string,
-  hideLogin: PropTypes.func.isRequired,
+  hideLoginModal: PropTypes.func.isRequired,
   loginAction: PropTypes.func.isRequired,
   loginCancelAction: PropTypes.func.isRequired,
 };
 
 LoginModal.defaultProps = {
-  loginVisible: false,
+  isVisible: false,
   errorMessage: '',
 };
 

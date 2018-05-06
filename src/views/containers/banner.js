@@ -12,21 +12,21 @@ import { login, loginCancel } from '../../state/login/actions';
 class Banner extends Component {
   constructor(props) {
     super(props);
-    this.state = { loginVisible: false };
+    this.state = { loginModalVisible: false };
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.loggedIn) {
-      this.hideLogin();
+      this.hideLoginModal();
     }
   }
 
-  showLogin = () => {
-    this.setState({ loginVisible: true });
+  showLoginModal = () => {
+    this.setState({ loginModalVisible: true });
   }
 
-  hideLogin = () => {
-    this.setState({ loginVisible: false });
+  hideLoginModal = () => {
+    this.setState({ loginModalVisible: false });
   }
 
   render() {
@@ -35,13 +35,13 @@ class Banner extends Component {
     return (
       <BannerHolder>
         <LoginModal
-          loginVisible={this.state.loginVisible}
+          isVisible={this.state.loginModalVisible}
           errorMessage={this.props.loginErrorMessage}
-          hideLogin={this.hideLogin}
+          hideLoginModal={this.hideLoginModal}
           loginAction={this.props.login}
           loginCancelAction={this.props.loginCancel}
         />
-        <BannerButton title="Login" onClick={this.showLogin} show={!isLoggedIn} />
+        <BannerButton title="Login" onClick={this.showLoginModal} show={!isLoggedIn} />
         <BannerButton title="Logout" onClick={() => Auth.deleteAccessToken()} show={isLoggedIn} />
       </BannerHolder>
     );
