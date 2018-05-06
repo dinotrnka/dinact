@@ -1,5 +1,7 @@
 import * as types from './types';
 
+import Auth from '../../utils/auth';
+
 const INITIAL_STATE = {
   loggedIn: false,
   errorMessage: '',
@@ -15,6 +17,7 @@ export default function (state = INITIAL_STATE, action) {
         errorMessage: '',
       };
     case types.LOGIN_SUCCESS:
+      Auth.setAccessToken(action.payload.access_token);
       return {
         ...state,
         loggedIn: true,

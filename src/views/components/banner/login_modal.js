@@ -10,13 +10,19 @@ class LoginModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'dinaga@gmail.com',
+      email: '',
       password: '',
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.loggedIn) {
+      this.props.hideLogin();
+    }
+  }
+
   onEnter = () => {
-    this.setState({ email: '', password: '' });
+    this.setState({ email: 'dinaga@gmail.com', password: 'kamion123' });
   }
 
   handleChange = (e) => {
@@ -69,14 +75,16 @@ class LoginModal extends Component {
 
 LoginModal.propTypes = {
   loginVisible: PropTypes.bool,
+  loggedIn: PropTypes.bool,
   errorMessage: PropTypes.string,
   hideLogin: PropTypes.func.isRequired,
-  login: PropTypes.func.isRequired,
   loginCancel: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
 };
 
 LoginModal.defaultProps = {
   loginVisible: false,
+  loggedIn: false,
   errorMessage: '',
 };
 
