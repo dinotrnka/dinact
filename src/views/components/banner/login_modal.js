@@ -1,28 +1,15 @@
 import React, { Component } from 'react';
 import { Modal, Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
-import { login, loginCancel } from '../../../state/login/actions';
 
 class LoginModal extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      email: '',
-      password: '',
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.loggedIn) {
-      this.props.hideLogin();
-    }
+    this.state = { email: '', password: '' };
   }
 
   onEnter = () => {
-    this.setState({ email: 'dinaga@gmail.com', password: 'kamion123' });
+    this.setState({ email: '', password: '' });
   }
 
   handleChange = (e) => {
@@ -30,13 +17,13 @@ class LoginModal extends Component {
   }
 
   handleSubmit = (e) => {
-    this.props.login(this.state.email, this.state.password);
+    this.props.loginAction(this.state.email, this.state.password);
     e.preventDefault();
   }
 
   handleClose = () => {
     this.props.hideLogin();
-    this.props.loginCancel();
+    this.props.loginCancelAction();
   }
 
   render() {
@@ -49,19 +36,11 @@ class LoginModal extends Component {
           <form style={formStyle} onSubmit={this.handleSubmit}>
             <FormGroup style={formGroupStyle} controlId="email" bsSize="large">
               <ControlLabel>Email</ControlLabel>
-              <FormControl
-                autoFocus
-                value={this.state.email}
-                onChange={this.handleChange}
-              />
+              <FormControl autoFocus value={this.state.email} onChange={this.handleChange} />
             </FormGroup>
             <FormGroup style={formGroupStyle} controlId="password" bsSize="large">
               <ControlLabel>Password</ControlLabel>
-              <FormControl
-                value={this.state.password}
-                onChange={this.handleChange}
-                type="password"
-              />
+              <FormControl value={this.state.password} onChange={this.handleChange} type="password" />
             </FormGroup>
             <div style={errorHolderStyle}>{this.props.errorMessage}</div>
             <Button bsSize="large" type="submit" style={loginButtonStyle}>Login</Button>
@@ -75,16 +54,14 @@ class LoginModal extends Component {
 
 LoginModal.propTypes = {
   loginVisible: PropTypes.bool,
-  loggedIn: PropTypes.bool,
   errorMessage: PropTypes.string,
   hideLogin: PropTypes.func.isRequired,
-  loginCancel: PropTypes.func.isRequired,
-  login: PropTypes.func.isRequired,
+  loginAction: PropTypes.func.isRequired,
+  loginCancelAction: PropTypes.func.isRequired,
 };
 
 LoginModal.defaultProps = {
   loginVisible: false,
-  loggedIn: false,
   errorMessage: '',
 };
 
@@ -108,18 +85,4 @@ const loginButtonStyle = {
   width: 100,
 };
 
-function mapStateToProps(state) {
-  return {
-    loggedIn: state.login.loggedIn,
-    errorMessage: state.login.errorMessage,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    login,
-    loginCancel,
-  }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);
+export default LoginModal;
